@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { dbService, storageService } from "fbase";
 import Nweet from "components/Nweet";
@@ -8,7 +8,6 @@ const Home = ({ userObj }) => {
     const [nweets, setNweets] = useState([]);
     const [attachment, setAttachment] = useState("");
     useEffect(() => {
-        getNweets();
         dbService.collection("nweets").onSnapshot((snapshot) => {
             const nweetArray = snapshot.docs.map((doc) => ({
                 id: doc.id,
@@ -85,7 +84,7 @@ const Home = ({ userObj }) => {
                     <Nweet
                         key={nweet.id}
                         nweetObj={nweet}
-                        isOwner={nweet.creatorId === userObj.id}
+                        isOwner={nweet.creatorId === userObj.uid}
                     />
                 ))}
             </div>

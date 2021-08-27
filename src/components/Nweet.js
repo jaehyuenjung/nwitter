@@ -58,7 +58,7 @@ const Nweet = ({ nweetObj, isOwner }) => {
                             <button onClick={onDeleteClick}>
                                 Delete Nweet
                             </button>
-                            <button onClick={tg}>Edit Nweet</button>
+                            <button onClick={toggleEditing}>Edit Nweet</button>
                         </>
                     )}
                 </>
